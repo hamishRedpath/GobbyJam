@@ -3,11 +3,16 @@ guid: 12195fb4bd5376c4ea8dfa7ed8126e80
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_ColourAtlas
+    second: {fileID: 2100000, guid: b9523e81a6c636d4d99c565692ab3f82, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
