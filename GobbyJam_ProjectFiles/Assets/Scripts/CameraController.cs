@@ -20,9 +20,10 @@ public class CameraController : MonoBehaviour
     }
 
     void LateUpdate()
-    {
+    {/*
         Vector3 newPos = playerTransform.position + offset;
-        transform.position = Vector3.Lerp(transform.position, newPos, smoothing);
+        transform.position = Vector3.Lerp(transform.position, newPos, smoothing); 
+     */
     }
 
     private void OnEnable()
