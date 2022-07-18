@@ -6,15 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Object References")]
     [SerializeField] private Rigidbody playerRB;
-    
 
-    void Awake()
+    [Header("Movement Variables")]
+    [SerializeField] private int playerSpeed;
+
+    void FixedUpdate()
     {
-        
+        Movement();
     }
 
-    void Update()
+    private void Movement()
     {
-        
+        playerRB.velocity = (new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized) * playerSpeed * Time.fixedDeltaTime;
     }
 }
