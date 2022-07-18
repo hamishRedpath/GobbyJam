@@ -1,38 +1,26 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform;
-    private Vector3 offset;
-    [Range(0.01f, 1.0f)]
-    [SerializeField] private float smoothing;
     PlayerInput input;
     [SerializeField] private float camSpeed;
-    private float xInput;
+    private Vector2 xInput;
+    [SerializeField] private GameObject pivot;
 
     void Start()
     {
-        offset = transform.position - playerTransform.position;
-        input.Gameplay.Camera.performed += ctx => xInput = ctx.ReadValue<int>();
-        input.Gameplay.Camera.canceled += ctx => xInput = 0;
+        input = PlayerController.input;
+        input.Gameplay.Camera.performed += ctx => xInput = ctx.ReadValue<Vector2>();
+        input.Gameplay.Camera.canceled += ctx => xInput = Vector2.zero;
     }
 
-    void LateUpdate()
-    {/*
-        Vector3 newPos = playerTransform.position + offset;
-        transform.position = Vector3.Lerp(transform.position, newPos, smoothing); 
-     */
-    }
-
-    private void OnEnable()
+    void Update()
     {
-        input.Gameplay.Enable();
+        pivot.transform.Rotate(0, xInput.x * camSpeed, 0);
+        Debug.Log(xInput.x);
     }
-
-    private void OnDisable()
-    {
-        input.Gameplay.Disable();
-    }
+ 
 }

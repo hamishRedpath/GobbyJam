@@ -6,17 +6,17 @@
             "id": "c2d778ad-2c9f-4ae3-9714-0cf8bb323891",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Camera",
                     "type": "Value",
-                    "id": "85b7727f-6be7-45e4-be2b-996ed10d7958",
+                    "id": "c7508537-6466-4b79-8bac-778eba942308",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Camera",
+                    "name": "Movement",
                     "type": "Value",
-                    "id": "c7508537-6466-4b79-8bac-778eba942308",
+                    "id": "85b7727f-6be7-45e4-be2b-996ed10d7958",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -37,7 +37,7 @@
                 {
                     "name": "",
                     "id": "9bd02b45-d868-4d71-a5a7-5337e1bf070a",
-                    "path": "<Gamepad>/rightStick/x",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

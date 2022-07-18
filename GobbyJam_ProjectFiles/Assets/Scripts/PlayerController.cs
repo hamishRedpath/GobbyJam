@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerInput input;
+     public static PlayerInput input;
     [Header("Object References")]
     [SerializeField] private Rigidbody playerRB;
 
