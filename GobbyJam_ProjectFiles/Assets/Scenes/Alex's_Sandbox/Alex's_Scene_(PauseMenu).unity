@@ -1278,8 +1278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -202, y: 130}
-  m_SizeDelta: {x: 491.29382, y: 27.280792}
+  m_AnchoredPosition: {x: -216, y: 125.34961}
+  m_SizeDelta: {x: 395.1863, y: 17.9801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378843345
 MonoBehaviour:
@@ -1314,9 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game Name
-
-'
+  m_Text: Brutal Bolt
 --- !u!222 &378843346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4300,7 +4298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.90588236}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
