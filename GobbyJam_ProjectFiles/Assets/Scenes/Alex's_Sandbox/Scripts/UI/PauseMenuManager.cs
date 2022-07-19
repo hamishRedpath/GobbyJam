@@ -9,9 +9,33 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject ControlsMenu;
     public GameObject ExitMenu;
 
+    public GameObject resumeFade;
+    public GameObject One;
+    public GameObject Two;
+    public GameObject Three;
+        
+
     public void ResumeGame()
     {
         PauseMenu.SetActive(false);
+        ControlsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        resumeFade.SetActive(true);
+        StartCoroutine(Countdown());
+    }
+
+    public IEnumerator Countdown()
+    {
+        Three.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        Three.gameObject.SetActive(false);
+        Two.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        Two.gameObject.SetActive(false);
+        One.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        One.gameObject.SetActive(false);
+        resumeFade.gameObject.SetActive(false);
     }
     public void SelectOptions()
     {
