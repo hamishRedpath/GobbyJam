@@ -324,7 +324,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -420,7 +420,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -516,6 +516,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ostMix: {fileID: 24100000, guid: c4a637aafa2549943a3b313c37ee2211, type: 2}
   trackNumber: 0
+  previousTrack: 1
+  currentVol: 0
+  previousVol: 0
 --- !u!82 &497272888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -530,7 +533,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -626,7 +629,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
