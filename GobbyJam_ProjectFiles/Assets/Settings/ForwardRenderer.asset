@@ -93,8 +93,7 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 5979101643161908232}
   - {fileID: -860177998973429538}
-  - {fileID: -7177343840797371842}
-  m_RendererFeatureMap: 08b49e0c4409fa52de1895d7aa0810f43e526fd2cdf3649c
+  m_RendererFeatureMap: 08b49e0c4409fa52de1895d7aa0810f4
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -109,7 +108,7 @@ MonoBehaviour:
     materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 247
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

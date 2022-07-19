@@ -7,9 +7,11 @@ public class AudioCrossFade : MonoBehaviour
 {
     public AudioMixer ostMix;
 
-    private float currentSpringVol, currentForestVol, currentSwampVol, currentPoolVol;
+    public int trackNumber;
+    public int previousTrack;
 
-    public float trackNumber;
+    public float currentVol;
+    public float previousVol;
 
     public void Update()
     {
@@ -40,23 +42,83 @@ public class AudioCrossFade : MonoBehaviour
     public IEnumerator HotSpringFade()
     {
         float currentTime = 0;
-        ostMix.GetFloat("hotSpringVol", out currentSpringVol);
-        ostMix.GetFloat("rainForestVol", out currentForestVol);
-        ostMix.GetFloat("swampVol", out currentSwampVol);
-        ostMix.GetFloat("rockPoolVol", out currentPoolVol);
-        currentSpringVol = Mathf.Pow(10, currentSpringVol / 20);
-        currentForestVol = Mathf.Pow(10, currentForestVol / 20);
-        currentSwampVol = Mathf.Pow(10, currentSwampVol / 20);
-        currentPoolVol = Mathf.Pow(10, currentPoolVol / 20);
+
+        switch (trackNumber)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out currentVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out currentVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out currentVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out currentVol);
+                break;
+
+        }
+
+        switch (previousTrack)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out previousVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out previousVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out previousVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out previousVol);
+                break;
+
+        }
+
+        previousVol = Mathf.Pow(10, previousVol / 20);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+
         while (currentTime < 5)
         {
             currentTime += Time.deltaTime;
-            float newVol = Mathf.Lerp(currentSpringVol, 1, currentTime / 2);
-            float newLow = Mathf.Lerp(currentForestVol, 0, currentTime / 2);
-            ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
+            float newVol = Mathf.Lerp(currentVol, 1, currentTime / 2);
+            float newLow = Mathf.Lerp(previousVol, 0, currentTime / 2);
+
+            switch (trackNumber)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newVol) * 20);
+                    break;
+
+            }
+
+            switch (previousTrack)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
+                    break;
+
+            }
             yield return null;
         }
         yield break;
@@ -65,24 +127,84 @@ public class AudioCrossFade : MonoBehaviour
     public IEnumerator RockPoolFade()
     {
         float currentTime = 0;
-        ostMix.GetFloat("hotSpringVol", out currentSpringVol);
-        ostMix.GetFloat("rainForestVol", out currentForestVol);
-        ostMix.GetFloat("swampVol", out currentSwampVol);
-        ostMix.GetFloat("rockPoolVol", out currentPoolVol);
-        currentSpringVol = Mathf.Pow(10, currentSpringVol / 20);
-        currentForestVol = Mathf.Pow(10, currentForestVol / 20);
-        currentSwampVol = Mathf.Pow(10, currentSwampVol / 20);
-        currentPoolVol = Mathf.Pow(10, currentPoolVol / 20);
+
+        switch(trackNumber)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out currentVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out currentVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out currentVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out currentVol);
+                break;
+
+        }
+
+        switch (previousTrack)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out previousVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out previousVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out previousVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out previousVol);
+                break;
+
+        }
+
+        previousVol = Mathf.Pow(10, previousVol / 20);
+
+        currentVol = Mathf.Pow(10, currentVol / 20);
+
         while (currentTime < 5)
         {
             currentTime += Time.deltaTime;
-            float newVol = Mathf.Lerp(currentPoolVol, 1, currentTime /2);
-            float newLow = Mathf.Lerp(currentForestVol, 0, currentTime / 2);
-            ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("rockPoolVol", Mathf.Log10(newVol) * 20);
-            ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
-            Debug.Log("rockPool");
+            float newVol = Mathf.Lerp(currentVol, 1, currentTime /2);
+            float newLow = Mathf.Lerp(previousVol, 0, currentTime / 2);
+
+            switch (trackNumber)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newVol) * 20);
+                    break;
+
+            }
+
+            switch (previousTrack)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
+                    break;
+
+            }
             yield return null;
         }
         yield break;
@@ -91,24 +213,84 @@ public class AudioCrossFade : MonoBehaviour
     public IEnumerator SwampFade()
     {
         float currentTime = 0;
-        ostMix.GetFloat("hotSpringVol", out currentSpringVol);
-        ostMix.GetFloat("rainForestVol", out currentForestVol);
-        ostMix.GetFloat("swampVol", out currentSwampVol);
-        ostMix.GetFloat("rockPoolVol", out currentPoolVol);
-        currentSpringVol = Mathf.Pow(10, currentSpringVol / 20);
-        currentForestVol = Mathf.Pow(10, currentForestVol / 20);
-        currentSwampVol = Mathf.Pow(10, currentSwampVol / 20);
-        currentPoolVol = Mathf.Pow(10, currentPoolVol / 20);
+
+        switch (trackNumber)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out currentVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out currentVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out currentVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out currentVol);
+                break;
+
+        }
+
+        switch (previousTrack)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out previousVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out previousVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out previousVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out previousVol);
+                break;
+
+        }
+
+        previousVol = Mathf.Pow(10, previousVol / 20);
+
+        currentVol = Mathf.Pow(10, currentVol / 20);
+
         while (currentTime < 5)
         {
             currentTime += Time.deltaTime;
-            float newVol = Mathf.Lerp(currentSwampVol, 1, currentTime / 2);
-            float newLow = Mathf.Lerp(currentSpringVol, 0.0001f, currentTime / 2);
-            ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("swampVol", Mathf.Log10(newVol) * 20);
-            ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
-            Debug.Log("swampy");
+            float newVol = Mathf.Lerp(currentVol, 1, currentTime / 2);
+            float newLow = Mathf.Lerp(previousVol, 0, currentTime / 2);
+
+            switch (trackNumber)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newVol) * 20);
+                    break;
+
+            }
+
+            switch (previousTrack)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
+                    break;
+
+            }
             yield return null;
         }
         yield break;
@@ -117,24 +299,84 @@ public class AudioCrossFade : MonoBehaviour
     public IEnumerator RainForestFade()
     {
         float currentTime = 0;
-        ostMix.GetFloat("hotSpringVol", out currentSpringVol);
-        ostMix.GetFloat("rainForestVol", out currentForestVol);
-        ostMix.GetFloat("swampVol", out currentSwampVol);
-        ostMix.GetFloat("rockPoolVol", out currentPoolVol);
-        currentSpringVol = Mathf.Pow(10, currentSpringVol / 20);
-        currentForestVol = Mathf.Pow(10, currentForestVol / 20);
-        currentSwampVol = Mathf.Pow(10, currentSwampVol / 20);
-        currentPoolVol = Mathf.Pow(10, currentPoolVol / 20);
+
+        switch (trackNumber)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out currentVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out currentVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out currentVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out currentVol);
+                break;
+
+        }
+
+        switch (previousTrack)
+        {
+            case 0:
+                ostMix.GetFloat("hotSpringVol", out previousVol);
+                break;
+            case 1:
+                ostMix.GetFloat("rainForestVol", out previousVol);
+                break;
+            case 2:
+                ostMix.GetFloat("swampVol", out previousVol);
+                break;
+            case 3:
+                ostMix.GetFloat("rockPoolVol", out previousVol);
+                break;
+
+        }
+
+        previousVol = Mathf.Pow(10, previousVol / 20);
+
+        currentVol = Mathf.Pow(10, currentVol / 20);
+
         while (currentTime < 5)
         {
             currentTime += Time.deltaTime;
-            float newVol = Mathf.Lerp(currentForestVol, 1, currentTime / 2);
-            float newLow = Mathf.Lerp(currentSpringVol, 0.0001f, currentTime / 2);
-            ostMix.SetFloat("rainForestVol", Mathf.Log10(newVol) * 20);
-            ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
-            ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
-            Debug.Log("rainforest");
+            float newVol = Mathf.Lerp(currentVol, 1, currentTime / 2);
+            float newLow = Mathf.Lerp(previousVol, 0, currentTime / 2);
+
+            switch (trackNumber)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newVol) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newVol) * 20);
+                    break;
+
+            }
+
+            switch (previousTrack)
+            {
+                case 0:
+                    ostMix.SetFloat("hotSpringVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 1:
+                    ostMix.SetFloat("rainForestVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 2:
+                    ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
+                    break;
+                case 3:
+                    ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
+                    break;
+
+            }
             yield return null;
         }
         yield break;
