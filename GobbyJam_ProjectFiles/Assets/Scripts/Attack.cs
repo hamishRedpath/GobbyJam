@@ -40,20 +40,11 @@ public class Attack : MonoBehaviour
             Debug.Log("Amount Shocked: " + lightningNodes.Count);
             AddToRenderer(lightningNodes);
         }
-
-        //for (int i = 0; i < lightningNodes.Count; i++)
-        //{
-        //    if (i == bouncebar)
-        //    {
-        //        return;
-        //    }
-        //    a = a.GetComponent<Enemy>().CheckNearestOtherEnemy();
-        //    lightningNodes.Add(a);   
-        //}
     }
 
     void AddToRenderer(List<GameObject> lightningNodes)
     {
+        
         lightningNodes.Clear(); 
     }
 
