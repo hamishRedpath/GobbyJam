@@ -3099,9 +3099,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game Title
-
-'
+  m_Text: Brutal Bolt
 --- !u!222 &994786123
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5817,6 +5815,7 @@ GameObject:
   - component: {fileID: 2005418983}
   - component: {fileID: 2005418982}
   - component: {fileID: 2005418984}
+  - component: {fileID: 2005418985}
   m_Layer: 5
   m_Name: GameTitle(Start)
   m_TagString: Untagged
@@ -5876,9 +5875,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game Title
-
-'
+  m_Text: Brutal Bolt
 --- !u!222 &2005418983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5916,6 +5913,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &2005418985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005418980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f45e4a4defde1f409165fb4ebf3318b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2007297686
 GameObject:
   m_ObjectHideFlags: 0
