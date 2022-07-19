@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 7ee6913093e6ac640804b886fccbe7bd
+guid: 3b62716e0b3c0164aa2645e9a4e49d90
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 959767402510740400
+    second: OptionsText_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackgroundPanel_0
+      name: OptionsText_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 162
-        width: 392
-        height: 192
+        x: 132
+        y: 303
+        width: 208
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26969f07b963aee40800000000000000
-      internalID: 5686417520751896930
+      spriteID: 0bbe6a51e57c15d00800000000000000
+      internalID: 959767402510740400
       vertices: []
       indices: 
       edges: []
