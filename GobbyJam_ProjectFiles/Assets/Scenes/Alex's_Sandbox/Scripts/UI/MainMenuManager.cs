@@ -12,6 +12,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject ControlsMenu;
     public GameObject QuitMenu;
 
+    
+
 
     public void OpenMenu()
     {
