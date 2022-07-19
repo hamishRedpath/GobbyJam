@@ -32,6 +32,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_10d83115a512499badf727363f937bd3:
+        m_Texture: {fileID: 2800000, guid: 4614633a155b30c429f553fe0ad8e1f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_44cf7a6e1e2040ac9c6230c19beb51bf:
+        m_Texture: {fileID: 2800000, guid: aac2ef648c11f6f4682ac7b243b55f8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -98,11 +106,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_51a47d40551d4540bc07cb23196fadb0: 2.73
-    - Vector1_5c87b4a32db841368492735472a9408c: 1
+    - Vector1_5c87b4a32db841368492735472a9408c: 0
     - Vector1_657b553dc2cd40338f7dcd4c2e958d81: 0.37
     - Vector1_6d5b8e3618cb42f08ef24da64c93457b: 1
     - Vector1_a81fbcb511024b3c940b42f50e2913dc: 0.00015
-    - Vector1_d8abd8e554024240a699149226b09b08: 1.46
+    - Vector1_d8abd8e554024240a699149226b09b08: 0.27
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
