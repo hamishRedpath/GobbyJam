@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject StartupMenu;
     public GameObject MainMenu;
     public GameObject OptionsMenu;
+    public GameObject ControlsMenu;
     public GameObject QuitMenu;
 
 
@@ -17,16 +18,21 @@ public class MainMenuManager : MonoBehaviour
         StartupMenu.SetActive(false);
         MainMenu.SetActive(true); ;
     }
-    public void PlaySelected()
+    public void SelectPlay()
     {
         SceneManager.LoadScene(1);
     }
-    public void SelectPauseMenu()
+    public void SelectOptionsMenu()
     {
         MainMenu.SetActive(false);
         OptionsMenu.SetActive(true);
     }
 
+    public void SelectControlsMenu()
+    {
+        ControlsMenu.gameObject.SetActive(true);
+        MainMenu.gameObject.SetActive(false);
+    }
     public void SelectQuitMenu()
     {
         QuitMenu.SetActive(true);
@@ -37,6 +43,7 @@ public class MainMenuManager : MonoBehaviour
         OptionsMenu.SetActive(false);
         MainMenu.SetActive(true);
         QuitMenu.SetActive(false);
+        ControlsMenu.SetActive(false);
     }
 
     public void QuitYes()
