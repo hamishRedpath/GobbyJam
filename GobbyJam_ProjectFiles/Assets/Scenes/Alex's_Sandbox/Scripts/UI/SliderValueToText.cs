@@ -15,7 +15,7 @@ public class SliderValueToText : MonoBehaviour
 
     public void ShowSliderValue(float value)
     {
-        textSliderValue.text = Mathf.RoundToInt(value) + "%";
+        textSliderValue.text = Mathf.RoundToInt(value * 100) + "%";
     }
 
     public void ShowCameraValue()
