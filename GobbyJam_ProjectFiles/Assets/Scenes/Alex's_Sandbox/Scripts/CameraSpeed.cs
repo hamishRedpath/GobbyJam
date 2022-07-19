@@ -10,6 +10,5 @@ public class CameraSpeed : MonoBehaviour
     {
        PlayerController.camSpeed =  camSlider.value;
 
-        Debug.Log(PlayerController.camSpeed);
     }
 }
