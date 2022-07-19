@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject OptionsMenu;
     public GameObject ControlsMenu;
     public GameObject QuitMenu;
+    public GameObject mainTitle;
 
     
 
@@ -18,7 +19,8 @@ public class MainMenuManager : MonoBehaviour
     public void OpenMenu()
     {
         StartupMenu.SetActive(false);
-        MainMenu.SetActive(true); ;
+        MainMenu.SetActive(true);
+        mainTitle.SetActive(true);
     }
     public void SelectPlay()
     {
