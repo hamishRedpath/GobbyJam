@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerInput input;
+    bool pressed;
+    [SerializeField] private LineRenderer lineRenderer;
+
+    List<Vector3> nodes = new List<Vector3>();
+
+    private void Start()
     {
-        
+        input = PlayerController.input;
+        input.Gameplay.Attack.performed += ctx => CheckAttack();
     }
 
-    // Update is called once per frame
-    void Update()
+    void CheckAttack()
     {
-        
+        // if conditions met attack
     }
+
+    
 }

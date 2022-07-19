@@ -57,7 +57,6 @@ public class AudioCrossFade : MonoBehaviour
             ostMix.SetFloat("swampVol", Mathf.Log10(newLow) * 20);
             ostMix.SetFloat("rockPoolVol", Mathf.Log10(newLow) * 20);
             ostMix.SetFloat("hotSpringVol", Mathf.Log10(newVol) * 20);
-            Debug.Log("hotsprings");
             yield return null;
         }
         yield break;

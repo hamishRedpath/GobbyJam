@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerSpeed;
     private Vector2 playerVelocity;
     private Vector2 xInput;
-    [SerializeField] private float camSpeed;
+    [SerializeField] static public float camSpeed = 2f;
 
     private void Awake()
     {
@@ -34,13 +34,17 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        transform.Rotate(0, xInput.x * camSpeed, 0);
+        Quaternion deltaRotation = Quaternion.Euler(0, xInput.x * camSpeed, 0);
+        playerRB.MoveRotation(playerRB.rotation * deltaRotation);
+
+        //transform.Rotate(0, xInput.x * camSpeed, 0);
         pivot.transform.Rotate(0, xInput.x * camSpeed, 0);
+
         pivot.transform.position = playerRB.gameObject.transform.position;
-        print(playerVelocity);
+
         Vector3 direction = new Vector3(playerVelocity.x, 0, playerVelocity.y);
-       // playerRB.MovePosition(playerRB.position + transform.TransformDirection(moveDirection) * Time.fixedDeltaTime * playerSpeed);
-       playerRB.velocity = transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed;
+        playerRB.MovePosition(playerRB.position + transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed);
+        // playerRB.velocity = transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed;
 
     }
 
