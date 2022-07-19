@@ -552,8 +552,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.011173248
+        value: 0.06918335
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -918,6 +918,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba67829cc7eecd94e9072853d3cb38ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1695491147}
+--- !u!135 &2027649744
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027649742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2028812557
 GameObject:
   m_ObjectHideFlags: 0
