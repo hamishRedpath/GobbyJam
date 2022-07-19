@@ -18,6 +18,8 @@ public class PauseMenuManager : MonoBehaviour
     public void ResumeGame()
     {
         PauseMenu.SetActive(false);
+        ControlsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
         resumeFade.SetActive(true);
         StartCoroutine(Countdown());
     }
@@ -33,6 +35,7 @@ public class PauseMenuManager : MonoBehaviour
         One.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         One.gameObject.SetActive(false);
+        resumeFade.gameObject.SetActive(false);
     }
     public void SelectOptions()
     {
