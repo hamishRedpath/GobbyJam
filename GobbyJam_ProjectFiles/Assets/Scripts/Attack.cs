@@ -83,7 +83,7 @@ public class Attack : MonoBehaviour
         bool display = true;
         while (display == true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
             print("please god help me");
             lineRenderer.positionCount = 0;
             display = false;

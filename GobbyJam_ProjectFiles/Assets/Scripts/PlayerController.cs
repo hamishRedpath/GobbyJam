@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerSpeed;
     private Vector2 playerVelocity;
     private Vector2 xInput;
-    [SerializeField] static public float camSpeed = 2f;
+    [SerializeField] static public float camSpeed = 3f;
 
     public Animator animator;
 
