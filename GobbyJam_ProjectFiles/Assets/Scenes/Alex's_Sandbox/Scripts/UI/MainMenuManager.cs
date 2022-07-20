@@ -25,10 +25,7 @@ public class MainMenuManager : MonoBehaviour
     public void SelectPlay()
     {
         SceneManager.LoadScene("Main");
-    }
-    public void SelectPlayPlease()
-    {
-        SceneManager.LoadScene("Main");
+        Debug.Log("HI");
     }
     public void SelectOptionsMenu()
     {
