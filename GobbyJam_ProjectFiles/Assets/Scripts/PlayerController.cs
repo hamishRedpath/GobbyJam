@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(playerVelocity.x, 0, playerVelocity.y);
         playerRB.MovePosition(playerRB.position + transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed);
         // playerRB.velocity = transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed;
-
     }
 
     private void OnEnable()
