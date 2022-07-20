@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     IEnumerator isShocked()
     {
         animator.SetBool("isDead", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         Destroy(transform.parent.gameObject);
 
     }

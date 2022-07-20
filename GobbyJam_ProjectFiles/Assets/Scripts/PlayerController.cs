@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator PlayerDeath()
     {
         animator.SetBool("isDead", true);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         this.gameObject.SetActive(false);
     }
     
