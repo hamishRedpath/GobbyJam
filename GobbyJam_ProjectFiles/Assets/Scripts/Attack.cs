@@ -10,7 +10,6 @@ public class Attack : MonoBehaviour
     public List<GameObject> lightningNodes = new List<GameObject>();
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
-    bool playerAlive = true;
 
     private void Start()
     {
@@ -90,8 +89,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
-        if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
+        if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
             if (!enemies.Contains(other.gameObject))
             {

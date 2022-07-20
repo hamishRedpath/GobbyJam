@@ -65,8 +65,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
-        if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
+        if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
             if (!enemies.Contains(other.gameObject))
             {
