@@ -21,6 +21,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (shocked)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+    }
+
     public void CheckNearestOtherEnemy()
     {
         foreach (var enemy in enemies)
@@ -48,6 +56,10 @@ public class Enemy : MonoBehaviour
             player.GetComponent<Attack>().lightningNodes.Add(nearest);
             shocked = true;
             nearest.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
+        }
+        else if(nearest == null && player.GetComponent<Attack>().lightningNodes.Count > 0)
+        {
+            shocked = true;
         }
     }
 

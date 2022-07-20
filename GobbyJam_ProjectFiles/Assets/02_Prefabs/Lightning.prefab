@@ -79,20 +79,38 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.011173248
-        value: 0.06918335
+        time: 0.088948146
+        value: 0.22544251
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5999931
+        value: 0.31250155
+        inSlope: -0.15517552
+        outSlope: -0.15517552
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.20238853
+        outWeight: 0.42337167
+      - serializedVersion: 3
+        time: 0.97777504
+        value: 0.099996924
+        inSlope: -1.3379027
+        outSlope: -1.3379027
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.27204874
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.254539, g: 0.8301887, b: 0.8137841, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

@@ -10,7 +10,8 @@ public class Attack : MonoBehaviour
     bool enemyInRange = false;
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> lightningNodes = new List<GameObject>();
-    int bouncebar = 10;
+    int maxBounces = 10;
+    int currentBounces;
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
 
@@ -18,13 +19,21 @@ public class Attack : MonoBehaviour
     {
         input = PlayerController.input;
         input.Gameplay.Attack.performed += ctx => CheckAttack();
+        currentBounces = 0;
+        StartCoroutine(ChargeLightning());
+    }
+
+    private void Update()
+    {
+        print(currentBounces);
     }
 
     void CheckAttack()
-    {
-        // if conditions met attack
-
-          BounceLighting();
+    { 
+        if(currentBounces > 0)
+        {
+            BounceLighting();
+        }
     }
 
     void BounceLighting()
@@ -33,16 +42,17 @@ public class Attack : MonoBehaviour
         GameObject firstEnemyHit = CheckNearestEnemy();
         if (firstEnemyHit != null)
         {
+            enemies.Clear();
             lightningNodes.Add(this.gameObject);
             lightningNodes.Add(firstEnemyHit);
             firstEnemyHit.GetComponentInChildren<Enemy>().shocked = true;
             firstEnemyHit.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
             Debug.Log("Amount Shocked: " + lightningNodes.Count);
-            AddToRenderer(lightningNodes);
+            AddToRenderer();
         }
     }
 
-    void AddToRenderer(List<GameObject> lightningNodes)
+    void AddToRenderer()
     {
         Vector3[] nodesToAdd = new Vector3[lightningNodes.Count];
         for (int i = 0; i < lightningNodes.Count; i++)
@@ -51,6 +61,7 @@ public class Attack : MonoBehaviour
         }
         lineRenderer.positionCount = nodesToAdd.Length;
         lineRenderer.SetPositions(nodesToAdd);
+        lightningNodes.Clear();
         // delete this after a fraction of a second
     }
 
@@ -80,7 +91,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
         if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
@@ -97,6 +108,15 @@ public class Attack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             enemies.Remove(other.gameObject);
+        }
+    }
+    
+    IEnumerator ChargeLightning()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(currentBounces < maxBounces)
+        {
+            currentBounces++;
         }
     }
 }
