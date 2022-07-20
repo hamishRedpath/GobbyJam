@@ -21,6 +21,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (shocked)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+    }
+
     public void CheckNearestOtherEnemy()
     {
         foreach (var enemy in enemies)

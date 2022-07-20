@@ -33,16 +33,17 @@ public class Attack : MonoBehaviour
         GameObject firstEnemyHit = CheckNearestEnemy();
         if (firstEnemyHit != null)
         {
+            enemies.Clear();
             lightningNodes.Add(this.gameObject);
             lightningNodes.Add(firstEnemyHit);
             firstEnemyHit.GetComponentInChildren<Enemy>().shocked = true;
             firstEnemyHit.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
             Debug.Log("Amount Shocked: " + lightningNodes.Count);
-            AddToRenderer(lightningNodes);
+            AddToRenderer();
         }
     }
 
-    void AddToRenderer(List<GameObject> lightningNodes)
+    void AddToRenderer()
     {
         Vector3[] nodesToAdd = new Vector3[lightningNodes.Count];
         for (int i = 0; i < lightningNodes.Count; i++)
@@ -51,6 +52,7 @@ public class Attack : MonoBehaviour
         }
         lineRenderer.positionCount = nodesToAdd.Length;
         lineRenderer.SetPositions(nodesToAdd);
+        lightningNodes.Clear();
         // delete this after a fraction of a second
     }
 
@@ -80,7 +82,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
         if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
