@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSight, playerInAttack;
 
+    public Animator animator;
+
 
     public void Start()
     {
@@ -31,6 +33,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
+
         playerInSight = Physics.CheckSphere(transform.position, sightRange, isPlayer);
         playerInAttack = Physics.CheckSphere(transform.position, attackRange, isPlayer);
 
@@ -52,18 +55,21 @@ public class EnemyController : MonoBehaviour
 
     void Idle()
     {
-        fishGuy.SetDestination(idlePoint);
+        //fishGuy.SetDestination(idlePoint);
+        animator.SetBool("Run", false);
+        animator.SetBool("isAttacking", false);
     }
 
     void Chasing()
     {
         fishGuy.SetDestination(player.position);
+        animator.SetBool("Run", true);
+
     }
 
     void Attacking()
     {
         fishGuy.SetDestination(transform.position);
-        transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
@@ -77,6 +83,8 @@ public class EnemyController : MonoBehaviour
     private void Attack()
     {
         attackTest++;
+        animator.SetBool("isAttacking", true);
+        animator.SetBool("Run", false);
     }
 
     private void ResetAttack()
