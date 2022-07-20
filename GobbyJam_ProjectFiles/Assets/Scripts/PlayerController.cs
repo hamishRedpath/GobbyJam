@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 xInput;
     [SerializeField] static public float camSpeed = 2f;
 
+    public Animator animator;
+
     private void Awake()
     {
         input = new PlayerInput();
@@ -30,6 +32,15 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+
+        if (playerVelocity != Vector2.zero)
+        {
+            animator.SetBool("isRun", true);
+        }
+        else
+        {
+            animator.SetBool("isRun", false);
+        }
     }
 
     private void Movement()
@@ -56,4 +67,20 @@ public class PlayerController : MonoBehaviour
     {
         input.Gameplay.Disable();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+      if (other.gameObject.tag == "Spear")
+        {
+            StartCoroutine(PlayerDeath());
+        }
+    }
+
+    IEnumerator PlayerDeath()
+    {
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(2);
+        this.gameObject.SetActive(false);
+    }
+    
 }

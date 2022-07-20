@@ -10,7 +10,8 @@ public class Attack : MonoBehaviour
     public List<GameObject> lightningNodes = new List<GameObject>();
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
-    bool playerAlive = true;
+
+    public Animator animator;
 
     private void Start()
     {
@@ -32,6 +33,8 @@ public class Attack : MonoBehaviour
             Debug.Log("Amount Shocked: " + lightningNodes.Count);
             AddToRenderer();
         }
+
+        StartCoroutine(AttackAnimation());
     }
 
     void AddToRenderer()
@@ -88,10 +91,16 @@ public class Attack : MonoBehaviour
         StopCoroutine(ClearPositions());
     }
 
+    IEnumerator AttackAnimation()
+    {
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(1);
+        animator.SetBool("isAttacking", false);
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
-        if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
+        if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
             if (!enemies.Contains(other.gameObject))
             {
