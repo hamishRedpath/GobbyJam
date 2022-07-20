@@ -11,6 +11,8 @@ public class Attack : MonoBehaviour
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
 
+    public Animator animator;
+
     private void Start()
     {
         input = PlayerController.input;
@@ -31,6 +33,8 @@ public class Attack : MonoBehaviour
             Debug.Log("Amount Shocked: " + lightningNodes.Count);
             AddToRenderer();
         }
+
+        StartCoroutine(AttackAnimation());
     }
 
     void AddToRenderer()
@@ -85,6 +89,13 @@ public class Attack : MonoBehaviour
             display = false;
         }
         StopCoroutine(ClearPositions());
+    }
+
+    IEnumerator AttackAnimation()
+    {
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(1);
+        animator.SetBool("isAttacking", false);
     }
 
     private void OnTriggerStay(Collider other)

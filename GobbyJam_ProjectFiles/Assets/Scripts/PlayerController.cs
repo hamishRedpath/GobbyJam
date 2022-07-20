@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 xInput;
     [SerializeField] static public float camSpeed = 2f;
 
+    public Animator animator;
+
     private void Awake()
     {
         input = new PlayerInput();
@@ -30,6 +32,15 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+
+        if (playerVelocity != Vector2.zero)
+        {
+            animator.SetBool("isRun", true);
+        }
+        else
+        {
+            animator.SetBool("isRun", false);
+        }
     }
 
     private void Movement()
@@ -55,5 +66,10 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         input.Gameplay.Disable();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+      
     }
 }

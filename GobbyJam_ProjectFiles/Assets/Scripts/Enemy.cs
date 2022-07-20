@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     public bool shocked = false;
 
+    public Animator animator;
+
     private void Start()
     {
         if (player == null)
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (shocked)
         {
-            Destroy(transform.parent.gameObject);
+            StartCoroutine(isShocked());
         }
     }
 
@@ -80,5 +82,13 @@ public class Enemy : MonoBehaviour
        {
             enemies.Remove(other.gameObject);
        }
+    }
+
+    IEnumerator isShocked()
+    {
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(2);
+        Destroy(transform.parent.gameObject);
+
     }
 }
