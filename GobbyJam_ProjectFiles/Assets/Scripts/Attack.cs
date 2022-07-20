@@ -10,7 +10,8 @@ public class Attack : MonoBehaviour
     bool enemyInRange = false;
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> lightningNodes = new List<GameObject>();
-    int bouncebar = 10;
+    int maxBounces = 10;
+    int currentBounces;
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
 
@@ -18,13 +19,21 @@ public class Attack : MonoBehaviour
     {
         input = PlayerController.input;
         input.Gameplay.Attack.performed += ctx => CheckAttack();
+        currentBounces = 0;
+        StartCoroutine(ChargeLightning());
+    }
+
+    private void Update()
+    {
+        print(currentBounces);
     }
 
     void CheckAttack()
-    {
-        // if conditions met attack
-
-          BounceLighting();
+    { 
+        if(currentBounces > 0)
+        {
+            BounceLighting();
+        }
     }
 
     void BounceLighting()
@@ -99,6 +108,15 @@ public class Attack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             enemies.Remove(other.gameObject);
+        }
+    }
+    
+    IEnumerator ChargeLightning()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(currentBounces < maxBounces)
+        {
+            currentBounces++;
         }
     }
 }

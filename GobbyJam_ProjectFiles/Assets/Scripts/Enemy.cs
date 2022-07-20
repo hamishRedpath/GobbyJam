@@ -57,6 +57,10 @@ public class Enemy : MonoBehaviour
             shocked = true;
             nearest.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
         }
+        else if(nearest == null && player.GetComponent<Attack>().lightningNodes.Count > 0)
+        {
+            shocked = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
