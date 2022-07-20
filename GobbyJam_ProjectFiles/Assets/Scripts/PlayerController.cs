@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [Header("Object References")]
     [SerializeField] private Rigidbody playerRB;
     [SerializeField] private GameObject pivot;
-    [SerializeField] private Transform camTransform;
 
     [Header("Movement Variables")]
     [SerializeField] private int playerSpeed;
@@ -45,17 +44,19 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        Quaternion deltaRotation = Quaternion.Euler(0, xInput.x * camSpeed, 0);
-        playerRB.MoveRotation(playerRB.rotation * deltaRotation);
+        if(playerVelocity == Vector2.zero)
+        {
+            Quaternion deltaRotation = Quaternion.Euler(0, xInput.x * camSpeed, 0);
+            playerRB.MoveRotation(playerRB.rotation * deltaRotation);
+        }
 
-        //transform.Rotate(0, xInput.x * camSpeed, 0);
+
         pivot.transform.Rotate(0, xInput.x * camSpeed, 0);
 
         pivot.transform.position = playerRB.gameObject.transform.position;
 
         Vector3 direction = new Vector3(playerVelocity.x, 0, playerVelocity.y);
         playerRB.MovePosition(playerRB.position + transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed);
-        // playerRB.velocity = transform.TransformDirection(direction) * Time.fixedDeltaTime * playerSpeed;
     }
 
     private void OnEnable()
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
         input.Gameplay.Disable();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
       if (other.gameObject.tag == "Spear")
         {
