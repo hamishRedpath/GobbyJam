@@ -44,11 +44,10 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        if(playerVelocity == Vector2.zero)
-        {
-            Quaternion deltaRotation = Quaternion.Euler(0, xInput.x * camSpeed, 0);
-            playerRB.MoveRotation(playerRB.rotation * deltaRotation);
-        }
+ 
+        Quaternion deltaRotation = Quaternion.Euler(0, xInput.x * camSpeed, 0);
+        playerRB.MoveRotation(playerRB.rotation * deltaRotation);
+       
 
 
         pivot.transform.Rotate(0, xInput.x * camSpeed, 0);
@@ -77,11 +76,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Spear")
+        {
+            StartCoroutine(PlayerDeath());
+        }
+    }
     IEnumerator PlayerDeath()
     {
+        playerSpeed = 0;
         animator.SetBool("isDead", true);
         animator.SetBool("isRun", false);
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(2.5f);
         this.gameObject.SetActive(false);
     }
     
