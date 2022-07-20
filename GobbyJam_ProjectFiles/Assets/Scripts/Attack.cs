@@ -25,15 +25,15 @@ public class Attack : MonoBehaviour
         // if conditions met attack
 
           BounceLighting();
-        
     }
 
     void BounceLighting()
     {
-        
+        lightningNodes.Clear();
         GameObject firstEnemyHit = CheckNearestEnemy();
         if (firstEnemyHit != null)
         {
+            lightningNodes.Add(this.gameObject);
             lightningNodes.Add(firstEnemyHit);
             firstEnemyHit.GetComponentInChildren<Enemy>().shocked = true;
             firstEnemyHit.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
@@ -44,8 +44,14 @@ public class Attack : MonoBehaviour
 
     void AddToRenderer(List<GameObject> lightningNodes)
     {
-        
-        lightningNodes.Clear(); 
+        Vector3[] nodesToAdd = new Vector3[lightningNodes.Count];
+        for (int i = 0; i < lightningNodes.Count; i++)
+        {
+            nodesToAdd[i] = lightningNodes[i].transform.position;
+        }
+        lineRenderer.positionCount = nodesToAdd.Length;
+        lineRenderer.SetPositions(nodesToAdd);
+        // delete this after a fraction of a second
     }
 
     GameObject CheckNearestEnemy()
@@ -68,7 +74,6 @@ public class Attack : MonoBehaviour
                         nearestEnemy = enemy;
                     }
                 }
-
             }
         }
         return nearestEnemy;

@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Don't be a fuck boy and set me");
         }
     }
+
     public void CheckNearestOtherEnemy()
     {
         foreach (var enemy in enemies)
@@ -40,19 +41,20 @@ public class Enemy : MonoBehaviour
                         nearest = enemy;
                     }
                 }
-                
             }
         }
         if (nearest != null)
         {
             player.GetComponent<Attack>().lightningNodes.Add(nearest);
+            shocked = true;
             nearest.GetComponentInChildren<Enemy>().CheckNearestOtherEnemy();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && !other.isTrigger)
+        other.TryGetComponent<CapsuleCollider>(out CapsuleCollider temp);
+        if (other.gameObject.tag == "Enemy" && !other.isTrigger && temp)
         {
             if (!enemies.Contains(other.gameObject))
             {
