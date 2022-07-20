@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8773454530055175933}
   - component: {fileID: 8773454530055175905}
   - component: {fileID: 8773454530055175910}
+  - component: {fileID: 3043841479234729751}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -115,7 +116,6 @@ MonoBehaviour:
   pivot: {fileID: 0}
   camTransform: {fileID: 0}
   playerSpeed: 100
-  camSpeed: 3
 --- !u!54 &8773454530055175910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,6 +132,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &3043841479234729751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8773454530055175932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba67829cc7eecd94e9072853d3cb38ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
+  enemies: []
+  lightningNodes: []
+  nearestEnemy: {fileID: 0}
 --- !u!1 &8773454530391061874
 GameObject:
   m_ObjectHideFlags: 0

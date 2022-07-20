@@ -51,7 +51,6 @@ public class Attack : MonoBehaviour
         }
         lineRenderer.positionCount = nodesToAdd.Length;
         lineRenderer.SetPositions(nodesToAdd);
-        //lineRenderer.SetPosition(lightningNodes.Count, transform.position);
         // delete this after a fraction of a second
     }
 
