@@ -5,35 +5,17 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     PlayerInput input;
-    bool pressed;
     [SerializeField] private LineRenderer lineRenderer;
-    bool enemyInRange = false;
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> lightningNodes = new List<GameObject>();
-    int maxBounces = 10;
-    int currentBounces;
     public GameObject nearestEnemy = null;
     float nearestEnemyDistance = -1;
+    bool playerAlive = true;
 
     private void Start()
     {
         input = PlayerController.input;
-        input.Gameplay.Attack.performed += ctx => CheckAttack();
-        currentBounces = 0;
-        StartCoroutine(ChargeLightning());
-    }
-
-    private void Update()
-    {
-        print(currentBounces);
-    }
-
-    void CheckAttack()
-    { 
-        if(currentBounces > 0)
-        {
-            BounceLighting();
-        }
+        input.Gameplay.Attack.performed += ctx => BounceLighting();
     }
 
     void BounceLighting()
@@ -55,13 +37,16 @@ public class Attack : MonoBehaviour
     void AddToRenderer()
     {
         Vector3[] nodesToAdd = new Vector3[lightningNodes.Count];
+       
         for (int i = 0; i < lightningNodes.Count; i++)
         {
             nodesToAdd[i] = lightningNodes[i].transform.position;
         }
+        
         lineRenderer.positionCount = nodesToAdd.Length;
         lineRenderer.SetPositions(nodesToAdd);
         lightningNodes.Clear();
+        StartCoroutine(ClearPositions());
         // delete this after a fraction of a second
     }
 
@@ -90,6 +75,18 @@ public class Attack : MonoBehaviour
         return nearestEnemy;
     }
 
+    IEnumerator ClearPositions()
+    {
+        bool display = true;
+        while (display == true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            print("please god help me");
+            lineRenderer.positionCount = 0;
+            display = false;
+        }
+        StopCoroutine(ClearPositions());
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -108,15 +105,6 @@ public class Attack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             enemies.Remove(other.gameObject);
-        }
-    }
-    
-    IEnumerator ChargeLightning()
-    {
-        yield return new WaitForSeconds(0.5f);
-        if(currentBounces < maxBounces)
-        {
-            currentBounces++;
         }
     }
 }

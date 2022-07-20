@@ -1749,6 +1749,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3043841479234729751, guid: abe579daa48893d4f92709725688c8fb, type: 3}
+      propertyPath: maxBounces
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043841479234729751, guid: abe579daa48893d4f92709725688c8fb, type: 3}
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 1695491147}
