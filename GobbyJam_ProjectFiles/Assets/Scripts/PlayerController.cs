@@ -80,7 +80,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator PlayerDeath()
     {
         animator.SetBool("isDead", true);
-        yield return new WaitForSeconds(3);
+        animator.SetBool("isRun", false);
+        yield return new WaitForSeconds(1.8f);
         this.gameObject.SetActive(false);
     }
     

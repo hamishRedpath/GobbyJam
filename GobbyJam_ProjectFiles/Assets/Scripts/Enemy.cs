@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         if (player == null)
         {
             Debug.LogError("Don't be a fuck boy and set me");
-        }
+                    }
     }
 
     private void Update()
@@ -87,7 +87,9 @@ public class Enemy : MonoBehaviour
     IEnumerator isShocked()
     {
         animator.SetBool("isDead", true);
-        yield return new WaitForSeconds(3);
+        animator.SetBool("Run", false);
+        EnemyController.sightRange = 0;
+        yield return new WaitForSeconds(2f);
         Destroy(transform.parent.gameObject);
 
     }

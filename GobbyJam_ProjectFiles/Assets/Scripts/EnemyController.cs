@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     public int attackTest;
 
     [Header("States")]
-    public float sightRange, attackRange;
+    public static float sightRange, attackRange;
     public bool playerInSight, playerInAttack;
 
     public Animator animator;
@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public void Start()
     {
         idlePoint = transform.position;
+        sightRange = 10;
     }
     private void Update()
     {
@@ -57,7 +58,6 @@ public class EnemyController : MonoBehaviour
     {
         //fishGuy.SetDestination(idlePoint);
         animator.SetBool("Run", false);
-        animator.SetBool("isAttacking", false);
     }
 
     void Chasing()
@@ -83,8 +83,8 @@ public class EnemyController : MonoBehaviour
     private void Attack()
     {
         attackTest++;
-        animator.SetBool("isAttacking", true);
         animator.SetBool("Run", false);
+        StartCoroutine(EnemyAttack());
     }
 
     private void ResetAttack()
@@ -92,5 +92,12 @@ public class EnemyController : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    public IEnumerator EnemyAttack()
+    {
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(1);
+        animator.SetBool("isAttacking", false);
+
+    }
 
 }
