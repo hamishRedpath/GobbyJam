@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Alex's_Sandbox/MainMenu.unity
     guid: c68c480c6da5e2249b800692d6c59fd4
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Main.unity
+    guid: 22587400b711d8c44b2f35ec1e3a8155
   m_configObjects: {}
