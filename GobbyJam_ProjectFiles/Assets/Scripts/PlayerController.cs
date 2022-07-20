@@ -70,6 +70,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      
+      if (other.gameObject.tag == "Spear")
+        {
+            StartCoroutine(PlayerDeath());
+        }
     }
+
+    IEnumerator PlayerDeath()
+    {
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(2);
+        this.gameObject.SetActive(false);
+    }
+    
 }
